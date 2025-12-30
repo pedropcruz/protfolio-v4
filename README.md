@@ -1,60 +1,74 @@
-# Nuxt Starter Template
+# PORTFOLIO_V4 [NEO-BRUTALIST_EDITION]
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+> A raw, high-contrast, interactive portfolio built with modern web technologies and a brutally honest design philosophy.
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
+![Tech Stack](https://img.shields.io/badge/NUXT-4-00DC82?style=for-the-badge&logo=nuxt.js&logoColor=white)
+![Tech Stack](https://img.shields.io/badge/TAILWIND-CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Tech Stack](https://img.shields.io/badge/GSAP-ANIMATION-88CE02?style=for-the-badge&logo=greensock&logoColor=white)
+![Tech Stack](https://img.shields.io/badge/POSTHOG-ANALYTICS-1d1d1d?style=for-the-badge&logo=posthog&logoColor=white)
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+---
 
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-  </picture>
-</a>
+## 🇬🇧 English
 
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
+This project is an exploration of the **Neo-Brutalist** web design trend, combining raw UI elements, bold typography, and high-contrast visuals with a robust Nuxt 4 architecture.
 
-## Quick Start
+### Key Features
 
-```bash [Terminal]
-npm create nuxt@latest -- -t github:nuxt-ui-templates/starter
-```
+*   **Neo-Brutalist Design System**: Hard shadows, monospaced fonts, marquee text, and raw borders.
+*   **Site Audit Tool**: An interactive component that analyzes any given URL using the **Google PageSpeed Insights API** (with a custom fallback scraper for robustness). It provides "brutally honest" feedback on performance, SEO, and code quality.
+*   **Real-time Statistics**: Fetches live analytics (visitors, page views, avg. session duration) directly from **PostHog** via server-side API routes, filtering out development traffic.
+*   **Global Command Palette**: Accessible via `Cmd+K`, offering quick navigation and theme toggling.
+*   **Internationalization (i18n)**: Full support for English and Portuguese.
+*   **Performance First**: Server-Side Rendering (SSR) and optimized asset delivery.
 
-## Deploy your own
+### Tech Stack
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
+*   **Framework**: Nuxt 4 (Vue 3)
+*   **Styling**: TailwindCSS
+*   **Animations**: GSAP (GreenSock)
+*   **Content**: Nuxt Content (Markdown-based blog and projects)
+*   **Analytics**: PostHog (Client-side tracking + Server-side data fetching)
 
-## Setup
+---
 
-Make sure to install the dependencies:
+## 🇵🇹 Português
 
-```bash
-pnpm install
-```
+Este projeto é uma exploração da tendência de web design **Neo-Brutalista**, combinando elementos de UI crus, tipografia arrojada e visuais de alto contraste com uma arquitetura Nuxt 4 robusta.
 
-## Development Server
+### Funcionalidades Principais
 
-Start the development server on `http://localhost:3000`:
+*   **Sistema de Design Neo-Brutalista**: Sombras duras, fontes monoespaçadas, texto em marquee e bordas cruas.
+*   **Ferramenta "Site Audit"**: Um componente interativo que analisa qualquer URL usando a **API Google PageSpeed Insights** (com um scraper de fallback personalizado). Fornece feedback "brutalmente honesto" sobre performance, SEO e qualidade do código.
+*   **Estatísticas em Tempo Real**: Obtém dados analíticos ao vivo (visitantes, visualizações, duração média da sessão) diretamente do **PostHog** via rotas de API do servidor, filtrando tráfego de desenvolvimento.
+*   **Command Palette Global**: Acessível via `Cmd+K`, oferecendo navegação rápida.
+*   **Internacionalização (i18n)**: Suporte completo para Inglês e Português.
+*   **Performance First**: Server-Side Rendering (SSR) e entrega otimizada de assets.
 
-```bash
-pnpm dev
-```
+---
 
-## Production
-
-Build the application for production:
-
-```bash
-pnpm build
-```
-
-Locally preview production build:
+## 🛠 Setup & Development
 
 ```bash
-pnpm preview
+# Install dependencies
+npm install
+
+# Create .env file
+cp .env.example .env
+# (Add your NUXT_POSTHOG_API_KEY and NUXT_POSTHOG_PROJECT_ID)
+
+# Start development server
+npm run dev
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 🚀 Build
+
+```bash
+# Build for production
+npm run build
+```
+
+---
+
+**Author**: Pedro Cruz
+**License**: MIT
