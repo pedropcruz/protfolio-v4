@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Public Sans', sans-serif;
+  --font-archivo: 'Archivo', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+
+  --color-black: #1a1a1a;
+  --color-white: #f5f5f5;
+  --color-electric: #f4d03f;
+
+  --box-shadow-hard: 8px 8px 0px 0px var(--color-black);
+  --box-shadow-hard-hover: 12px 12px 0px 0px var(--color-black);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #F4D03F;
+  border-left: 4px solid #1A1A1A;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A1A1A; 
+  border: 2px solid #F4D03F;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+.tooltip-trigger:hover .tooltip-content {
+  display: block;
+}
+
+.shadow-hard {
+  box-shadow: var(--box-shadow-hard);
+}
+
+.shadow-hard-hover {
+  box-shadow: var(--box-shadow-hard-hover);
+}
