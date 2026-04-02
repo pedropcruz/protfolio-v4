@@ -4,31 +4,35 @@ const { t } = useI18n();
 
 <template>
   <section
-    class="min-h-[85vh] flex flex-col justify-between pt-8 md:pt-12 pb-12 px-4 md:px-12 border-l-0 md:border-l-4 border-black ml-0 md:ml-12 relative mb-20"
+    class="min-h-[85vh] flex flex-col justify-between pt-8 md:pt-12 pb-12 relative"
   >
     <div class="flex flex-col">
       <div
-        class="flex flex-col lg:flex-row justify-between items-start lg:items-end border-b-4 border-black pb-4 mb-8"
+        class="flex flex-col lg:flex-row justify-between items-start lg:items-end border-b border-border pb-4 mb-8"
       >
         <h1
-          class="text-[18vw] lg:text-[11rem] font-archivo font-bold leading-[0.85] tracking-tighter wrap-break-words w-full"
+          class="text-[18vw] lg:text-[11rem] font-display font-bold leading-[0.85] tracking-tighter wrap-break-words w-full text-white"
         >
           PEDRO<br />CRUZ
         </h1>
 
         <div
-          class="text-left lg:text-right font-mono font-bold py-4 lg:py-0 w-full lg:w-auto mt-4 lg:mt-0"
+          class="text-left lg:text-right py-4 lg:py-0 w-full lg:w-auto mt-4 lg:mt-0"
         >
-          <div class="mb-1 whitespace-nowrap text-xs md:text-xl">
-            {{ t("role") }}
-          </div>
-          <div class="mb-1 whitespace-nowrap text-xs md:text-xl">
-            {{ t("location") }}
+          <div
+            class="label text-text-secondary mb-1 whitespace-nowrap text-xs md:text-sm"
+          >
+            {{ t('role') }}
           </div>
           <div
-            class="text-black bg-white px-2 py-1 inline-block border-2 border-black animate-pulse whitespace-nowrap text-xs md:text-xl"
+            class="label text-text-disabled mb-1 whitespace-nowrap text-xs md:text-sm"
           >
-            {{ t("available_work") }}
+            {{ t('location') }}
+          </div>
+          <div
+            class="bg-accent text-black rounded-full px-3 py-1 inline-block whitespace-nowrap text-xs md:text-sm font-mono font-bold"
+          >
+            {{ t('available_work') }}
           </div>
         </div>
       </div>
@@ -41,9 +45,9 @@ const { t } = useI18n();
         class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 lg:gap-12"
       >
         <div
-          class="max-w-2xl font-montserrat font-bold text-xl md:text-2xl uppercase leading-tight"
+          class="max-w-2xl font-sans text-text-primary text-xl md:text-2xl leading-tight"
         >
-          {{ t("hero_desc") }}
+          {{ t('hero_desc') }}
         </div>
 
         <div class="w-full lg:w-auto">
