@@ -7,7 +7,7 @@ defineProps<{
 
 <template>
   <div
-    class="w-full border-4 border-black shadow-hard overflow-hidden my-8 md:my-16"
+    class="w-full border border-border rounded-lg overflow-hidden my-8 md:my-16"
   >
     <NuxtImg
       :src="src"

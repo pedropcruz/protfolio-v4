@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: "blank",
+  layout: 'blank'
 });
 
 const route = useRoute();
@@ -9,11 +9,11 @@ const { locale } = useI18n();
 const slug = route.params.slug as string;
 
 const { data: post } = await useAsyncData(`post-${slug}`, async () => {
-  const collection = queryCollection("blog");
-  let found = await collection.where("stem", "=", `blog/${slug}`).first();
+  const collection = queryCollection('blog');
+  let found = await collection.where('stem', '=', `blog/${slug}`).first();
 
   if (!found) {
-    found = await collection.where("stem", "=", slug).first();
+    found = await collection.where('stem', '=', slug).first();
   }
 
   return found;
@@ -22,13 +22,13 @@ const { data: post } = await useAsyncData(`post-${slug}`, async () => {
 if (!post.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: "Post Not Found",
-    fatal: true,
+    statusMessage: 'Post Not Found',
+    fatal: true
   });
 }
 
 const { data: allPosts } = await useAsyncData(`all-posts`, () =>
-  queryCollection("blog").order("date", "DESC").all(),
+  queryCollection('blog').order('date', 'DESC').all()
 );
 
 const currentIndex = computed(() => {
@@ -49,7 +49,7 @@ const nextPost = computed(() => {
 
 const title = computed(() => {
   const t = post.value?.title;
-  return typeof t === "object" && t !== null ? (t as any)[locale.value] : t;
+  return typeof t === 'object' && t !== null ? (t as any)[locale.value] : t;
 });
 
 const category = computed(() => post.value?.category);
@@ -59,13 +59,13 @@ useSeoMeta({
   title: `${title.value} - Pedro Cruz`,
   description: `${category.value} - ${date.value}`,
   ogTitle: `${title.value} - Pedro Cruz`,
-  ogDescription: `${category.value} - ${date.value}`,
+  ogDescription: `${category.value} - ${date.value}`
 });
 
-const { data: stats, status } = await useFetch("/api/blog-stats", {
+const { data: stats, status } = await useFetch('/api/blog-stats', {
   query: { slug },
   server: false,
-  lazy: true,
+  lazy: true
 });
 
 watch(
@@ -74,21 +74,21 @@ watch(
     if (post.value && newStats) {
       post.value = {
         ...post.value,
-        analytics: newStats,
+        analytics: newStats
       };
     }
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 onMounted(() => {
   const { $posthog } = useNuxtApp();
   if ($posthog) {
-    $posthog().capture("post_viewed", {
+    $posthog().capture('post_viewed', {
       title: title.value,
       category: category.value,
       slug: slug,
-      publish_date: date.value,
+      publish_date: date.value
     });
   }
 });

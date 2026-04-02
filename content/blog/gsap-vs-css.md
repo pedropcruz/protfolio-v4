@@ -1,14 +1,14 @@
 ---
-id: "3"
-category: "MOTION"
-date: "2024.10.05"
+id: '3'
+category: 'MOTION'
+date: '2024.10.05'
 title:
-  en: "GSAP VS CSS TRANSITIONS: PERFORMANCE AUDIT"
-  pt: "GSAP VS CSS TRANSITIONS: AUDITORIA DE PERFORMANCE"
+  en: 'GSAP VS CSS TRANSITIONS: PERFORMANCE AUDIT'
+  pt: 'GSAP VS CSS TRANSITIONS: AUDITORIA DE PERFORMANCE'
 analytics:
   views: 15234
   reads: 9876
-  avgTime: "5:45"
+  avgTime: '5:45'
   shares: 892
 ---
 

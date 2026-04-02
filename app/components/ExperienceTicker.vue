@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { gsap } from "gsap";
+import { gsap } from 'gsap';
 
 const COMPANIES = [
-  "SPARQLY",
-  "VOLKSWAGEN DIGITAL SOLUTIONS",
-  "VALTECH",
-  "FIDGROVE",
-  "PIKSEL",
-  "GRUPO IMPRESA",
+  'SPARQLY',
+  'VOLKSWAGEN DIGITAL SOLUTIONS',
+  'VALTECH',
+  'FIDGROVE',
+  'PIKSEL',
+  'GRUPO IMPRESA'
 ];
 
 const currentIndex = ref(0);
@@ -22,7 +22,7 @@ onMounted(() => {
       y: -20,
       opacity: 0,
       duration: 0.3,
-      ease: "power2.in",
+      ease: 'power2.in',
       onComplete: () => {
         currentIndex.value = (currentIndex.value + 1) % COMPANIES.length;
 
@@ -32,9 +32,9 @@ onMounted(() => {
           y: 0,
           opacity: 1,
           duration: 0.3,
-          ease: "power2.out",
+          ease: 'power2.out'
         });
-      },
+      }
     });
   }, 3000);
 });
@@ -46,17 +46,17 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 font-mono text-sm md:text-base font-bold uppercase tracking-wide mb-8 pb-4 border-b-2 border-black/10 w-full max-w-2xl"
+    class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 text-sm md:text-base tracking-wide mb-8 pb-4 border-b border-border w-full max-w-2xl"
   >
     <div class="flex items-center gap-2">
-      <span class="w-2 h-2 bg-black animate-pulse" />
-      <span class="opacity-50">PREVIOUSLY_DEPLOYED_AT:</span>
+      <span class="w-2 h-2 bg-accent rounded-full" />
+      <span class="label text-text-secondary">PREVIOUSLY_DEPLOYED_AT:</span>
     </div>
 
     <div class="h-6 md:h-6 overflow-hidden relative min-w-50">
       <div
         ref="textRef"
-        class="whitespace-nowrap bg-black text-electric px-2 inline-block"
+        class="whitespace-nowrap bg-surface-raised text-accent px-3 py-1 rounded inline-block font-mono text-sm"
       >
         {{ COMPANIES[currentIndex] }}
       </div>

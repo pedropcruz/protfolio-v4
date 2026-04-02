@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const props = defineProps<{
-  lang: 'en' | 'pt'
-}>()
+  lang: 'en' | 'pt';
+}>();
 
-const { locale } = useI18n()
+const { locale } = useI18n();
 </script>
 
 <template>

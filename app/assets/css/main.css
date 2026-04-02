@@ -1,42 +1,79 @@
-@import "tailwindcss";
-@import "@nuxt/ui";
+@import 'tailwindcss';
+@import '@nuxt/ui';
 
 @theme static {
-  --font-sans: 'Public Sans', sans-serif;
-  --font-archivo: 'Archivo', sans-serif;
-  --font-montserrat: 'Montserrat', sans-serif;
+  /* Nothing Design — Fonts (2-font system: Doto + Space Mono) */
+  --font-sans: 'Space Mono', monospace;
+  --font-display: 'Doto', sans-serif;
+  --font-mono: 'Space Mono', monospace;
 
-  --color-black: #1a1a1a;
-  --color-white: #f5f5f5;
-  --color-electric: #f4d03f;
+  /* Nothing Design — Colors (Yellow + Black) */
+  --color-black: #000000;
+  --color-surface: #111111;
+  --color-surface-raised: #1a1a1a;
+  --color-white: #ffffff;
+  --color-accent: #d4a843;
+  --color-accent-subtle: rgba(212, 168, 67, 0.15);
 
-  --box-shadow-hard: 8px 8px 0px 0px var(--color-black);
-  --box-shadow-hard-hover: 12px 12px 0px 0px var(--color-black);
+  /* Text hierarchy */
+  --color-text-display: #ffffff;
+  --color-text-primary: #e8e8e8;
+  --color-text-secondary: #999999;
+  --color-text-disabled: #666666;
+
+  /* Borders */
+  --color-border: #222222;
+  --color-border-visible: #333333;
+
+  /* Status */
+  --color-success: #4a9e5c;
+  --color-warning: #d4a843;
+  --color-error: #d71921;
+  --color-interactive: #5b9bf6;
 }
 
+/* Scrollbar — thin, dark */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F4D03F;
-  border-left: 4px solid #1A1A1A;
+  background: #111111;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1A1A1A; 
-  border: 2px solid #F4D03F;
+  background: #333333;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #333;
+  background: #d4a843;
+}
+
+/* Nothing utilities */
+.dot-grid {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+.dot-grid-subtle {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.03) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 16px 16px;
+}
+
+.label {
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.6875rem;
+  line-height: 1;
 }
 
 .tooltip-trigger:hover .tooltip-content {
   display: block;
-}
-
-.shadow-hard {
-  box-shadow: var(--box-shadow-hard);
-}
-
-.shadow-hard-hover {
-  box-shadow: var(--box-shadow-hard-hover);
 }

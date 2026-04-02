@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: "blank",
+  layout: 'blank'
 });
 
 const route = useRoute();
@@ -10,13 +10,13 @@ const slug = route.params.slug as string;
 
 // Query the exact file: projects/slug
 const { data: project } = await useAsyncData(`project-${slug}`, async () => {
-  const collection = queryCollection("projects");
+  const collection = queryCollection('projects');
   // Try with prefix first
-  let found = await collection.where("stem", "=", `projects/${slug}`).first();
+  let found = await collection.where('stem', '=', `projects/${slug}`).first();
 
   // Fallback
   if (!found) {
-    found = await collection.where("stem", "=", slug).first();
+    found = await collection.where('stem', '=', slug).first();
   }
 
   return found;
@@ -25,15 +25,15 @@ const { data: project } = await useAsyncData(`project-${slug}`, async () => {
 if (!project.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: "Project Not Found",
-    fatal: true,
+    statusMessage: 'Project Not Found',
+    fatal: true
   });
 }
 
 // Localized Description helper
 const description = computed(() => {
   const d = project.value?.description;
-  return typeof d === "object" && d !== null ? (d as any)[locale.value] : d;
+  return typeof d === 'object' && d !== null ? (d as any)[locale.value] : d;
 });
 
 // SEO
@@ -41,16 +41,16 @@ useSeoMeta({
   title: `${project.value.title} - Pedro Cruz`,
   description: description.value,
   ogTitle: `${project.value.title} - Pedro Cruz`,
-  ogDescription: description.value,
+  ogDescription: description.value
 });
 
 onMounted(() => {
   const { $posthog } = useNuxtApp();
   if ($posthog) {
-    $posthog().capture("project_viewed", {
+    $posthog().capture('project_viewed', {
       title: project.value?.title,
       slug: slug,
-      tags: project.value?.tags,
+      tags: project.value?.tags
     });
   }
 });

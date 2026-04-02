@@ -58,7 +58,7 @@ export interface ContentBlogPost {
 }
 
 export interface EstimateResponse {
-  type: "ESTIMATE" | "REFUSAL";
+  type: 'ESTIMATE' | 'REFUSAL';
   invoiceId?: string;
   date?: string;
   totalCost?: number;

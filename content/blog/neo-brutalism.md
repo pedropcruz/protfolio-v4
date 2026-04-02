@@ -13,7 +13,7 @@ seo:
   title:
     en: THE CASE FOR NEO-BRUTALISM IN MODERN WEB
     pt: O CASO PARA O NEO-BRUTALISMO NA WEB MODERNA
-  description: ""
+  description: ''
 ---
 
 ::locale-content{lang="en"}
@@ -37,7 +37,7 @@ But here's the secret: it's also more accessible. High contrast = better readabi
 - Shadows should be solid offsets (e.g., 4px 4px 0 black)
 - Limit your color palette to 3-4 high-contrast colors
 - Typography should be bold and uppercase for headers
-::
+  ::
 
 ::locale-content{lang="pt"}
 Num mundo afogado em botões gradiente e sombras suaves, o neo-brutalismo emerge como um dedo do meio ao establishment. Não é sobre ser feio—é sobre ser **honesto**.
@@ -60,4 +60,4 @@ Mas aqui está o segredo: também é mais acessível. Alto contraste = melhor le
 - Sombras devem ser offsets sólidos (ex: 4px 4px 0 black)
 - Limita a paleta a 3-4 cores de alto contraste
 - Tipografia deve ser bold e uppercase para headers
-::
+  ::

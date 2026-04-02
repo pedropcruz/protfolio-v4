@@ -1,43 +1,43 @@
-import { process } from "std-env";
+import { process } from 'std-env';
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
   const query = getQuery(event);
-  const slug = String(query.slug || "");
+  const slug = String(query.slug || '');
 
   if (!slug) {
     return {
       views: 0,
       reads: 0,
-      avgTime: "0m",
+      avgTime: '0m',
       shares: 0
     };
   }
 
-  let projectId: string = config.posthogProjectId || "";
-  let apiKey: string = config.posthogApiKey || "";
+  let projectId: string = config.posthogProjectId || '';
+  let apiKey: string = config.posthogApiKey || '';
 
   if (!projectId) {
-    projectId = process.env.NUXT_POSTHOG_PROJECT_ID || "";
+    projectId = process.env.NUXT_POSTHOG_PROJECT_ID || '';
   }
   if (!apiKey) {
-    apiKey = process.env.NUXT_POSTHOG_API_KEY || "";
+    apiKey = process.env.NUXT_POSTHOG_API_KEY || '';
   }
 
-  projectId = String(projectId || "").trim();
-  apiKey = String(apiKey || "").trim();
-  const host = config.public.posthogHost || "https://eu.i.posthog.com";
+  projectId = String(projectId || '').trim();
+  apiKey = String(apiKey || '').trim();
+  const host = config.public.posthogHost || 'https://eu.i.posthog.com';
 
   // Fallback structure matches the component expectation
   const fallback = {
     views: 0,
     reads: 0,
-    avgTime: "0m",
+    avgTime: '0m',
     shares: 0
   };
 
   if (!projectId || !apiKey) {
-    console.error("❌ CONFIG ERROR: Missing PostHog credentials");
+    console.error('❌ CONFIG ERROR: Missing PostHog credentials');
     return fallback;
   }
 
@@ -65,37 +65,35 @@ export default defineEventHandler(async (event) => {
 
     const queryPayload = {
       query: {
-        kind: "HogQLQuery",
+        kind: 'HogQLQuery',
         query: `
           select 
             (${viewsQuery}).1 as views,
             (${viewsQuery}).2 as readers,
             (${timeQuery}) as avg_duration
         `
-      },
+      }
     };
 
     const response = await $fetch<{ results: [number, number, number][] }>(
       `${host}/api/projects/${projectId}/query/`,
       {
-        method: "POST",
+        method: 'POST',
         headers: { Authorization: `Bearer ${apiKey}` },
-        body: queryPayload,
-      },
+        body: queryPayload
+      }
     );
 
     const [views, readers, avgDurationMs] =
-      response.results && response.results[0]
-        ? response.results[0]
-        : [0, 0, 0];
-    
+      response.results && response.results[0] ? response.results[0] : [0, 0, 0];
+
     // Format duration from ms to "Xm Ys"
-    let avgTime = "0m";
+    let avgTime = '0m';
     if (avgDurationMs && avgDurationMs > 0) {
-        const seconds = Math.floor(avgDurationMs / 1000);
-        const m = Math.floor(seconds / 60);
-        const s = seconds % 60;
-        avgTime = `${m}m ${s}s`;
+      const seconds = Math.floor(avgDurationMs / 1000);
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      avgTime = `${m}m ${s}s`;
     }
 
     return {
@@ -104,11 +102,10 @@ export default defineEventHandler(async (event) => {
       avgTime,
       shares: 0 // Placeholder
     };
-
   } catch (error: any) {
-    console.error("❌ POSTHOG API ERROR:", error.message);
+    console.error('❌ POSTHOG API ERROR:', error.message);
     if (error.data) {
-        console.error("Error Detail:", JSON.stringify(error.data, null, 2));
+      console.error('Error Detail:', JSON.stringify(error.data, null, 2));
     }
     return fallback;
   }

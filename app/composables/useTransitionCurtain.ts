@@ -1,5 +1,5 @@
 export const useTransitionCurtain = () => {
-  const transitionRef = useState<any>("transitionCurtain", () => null);
+  const transitionRef = useState<any>('transitionCurtain', () => null);
 
   const register = (ref: Ref) => {
     transitionRef.value = ref;
@@ -15,6 +15,6 @@ export const useTransitionCurtain = () => {
 
   return {
     register,
-    play,
+    play
   };
 };

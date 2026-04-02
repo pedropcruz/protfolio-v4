@@ -7,8 +7,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     api_host: config.public.posthogHost || 'https://eu.i.posthog.com',
     capture_pageview: false,
     loaded: (posthog) => {
-      //if (import.meta.env.DEV) posthog.debug();
-    },
+      // if (import.meta.env.DEV) posthog.debug();
+    }
   });
 
   // Track pageview
@@ -16,14 +16,14 @@ export default defineNuxtPlugin((nuxtApp) => {
   router.afterEach((to) => {
     nextTick(() => {
       posthog.capture('$pageview', {
-        $current_url: to.fullPath,
+        $current_url: to.fullPath
       });
     });
   });
 
   return {
     provide: {
-      posthog: () => posthogClient,
-    },
+      posthog: () => posthogClient
+    }
   };
 });

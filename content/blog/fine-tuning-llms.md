@@ -13,7 +13,7 @@ seo:
   title:
     en: FINE-TUNING LLMS FOR PROMPT ENGINEERING
     pt: AJUSTE FINO DE LLMS PARA PROMPT ENGINEERING
-  description: ""
+  description: ''
 ---
 
 ::locale-content{lang="en"}

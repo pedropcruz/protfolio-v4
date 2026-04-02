@@ -1,24 +1,22 @@
 <script setup>
 useHead({
-  meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
-  link: [{ rel: "icon", href: "/favicon.ico" }],
+  meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+  link: [{ rel: 'icon', href: '/favicon.ico' }],
   htmlAttrs: {
-    lang: "en",
-  },
+    lang: 'en'
+  }
 });
 
-const title = "Pedro Cruz - Portfolio";
+const title = 'Pedro Cruz — CEO @ SOLOFOUNDER';
 const description =
-  "Your go-to developer for crafting exceptional web experiences. Explore my portfolio and discover how I can bring your digital visions to life with cutting-edge technology and innovative solutions.";
+  'I find small problems worth solving and ship the product, brand, and code myself. Design, engineering, and product — solo.';
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: "https://ui.nuxt.com/assets/templates/nuxt/starter-light.png",
-  twitterImage: "https://ui.nuxt.com/assets/templates/nuxt/starter-light.png",
-  twitterCard: "summary_large_image",
+  twitterCard: 'summary_large_image'
 });
 </script>
 

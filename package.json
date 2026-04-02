@@ -7,27 +7,33 @@
     "dev": "nuxt dev",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint .",
-    "typecheck": "nuxt typecheck"
+    "lint": "oxlint && eslint .",
+    "lint:fix": "oxlint --fix && eslint . --fix",
+    "typecheck": "nuxt typecheck",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.74",
     "@iconify-json/simple-icons": "^1.2.59",
-    "@nuxt/content": "3.9.0",
-    "@nuxt/hints": "1.0.0-alpha.4",
-    "@nuxt/image": "2.0.0",
+    "@nuxt/content": "^3.9.0",
+    "@nuxt/hints": "^1.0.0",
+    "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.2.1",
-    "@nuxtjs/i18n": "10.2.1",
+    "@nuxtjs/i18n": "^10.2.1",
     "better-sqlite3": "^12.5.0",
     "nuxt": "^4.2.2",
-    "nuxt-studio": "1.0.0-beta.1",
+    "nuxt-studio": "^1.0.0-beta.1",
     "posthog-js": "^1.311.0",
     "posthog-node": "^5.18.0",
-    "v-gsap-nuxt": "1.4.4"
+    "v-gsap-nuxt": "^1.4.4"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.10.0",
     "eslint": "^9.39.1",
+    "eslint-plugin-oxlint": "^1.58.0",
+    "oxfmt": "^0.43.0",
+    "oxlint": "^1.58.0",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.1.5"
   },
