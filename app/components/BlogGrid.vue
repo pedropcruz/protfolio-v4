@@ -1,67 +1,70 @@
 <script setup lang="ts">
-import type { BlogCollectionItem } from "@nuxt/content"
+import type { BlogCollectionItem } from '@nuxt/content';
 
 const props = defineProps<{
-  posts: BlogCollectionItem[]
-}>()
+  posts: BlogCollectionItem[];
+}>();
 
 const emit = defineEmits<{
-  openArchive: []
-}>()
+  openArchive: [];
+}>();
 
-const { t } = useI18n()
-const { getBlogUrl } = useContentUrl()
-const { getLocalized } = useLocalizedValue()
-const visiblePosts = computed(() => props.posts.slice(0, 3))
+const { t } = useI18n();
+const { getBlogUrl } = useContentUrl();
+const { getLocalized } = useLocalizedValue();
+const visiblePosts = computed(() => props.posts.slice(0, 3));
 </script>
 
 <template>
   <section
     id="blog-section"
-    class="py-20 md:py-32 px-4 md:px-12 border-b-4 border-black"
   >
     <div
-      class="flex flex-col lg:flex-row justify-between items-start lg:items-end border-b-4 border-black pb-4 mb-12 gap-6 lg:gap-0"
+      class="flex flex-col lg:flex-row justify-between items-start lg:items-end border-b border-border pb-4 mb-12 gap-6 lg:gap-0"
     >
       <div
         class="flex flex-col md:flex-row items-start md:items-end gap-2 md:gap-4"
       >
-        <h2 class="text-4xl md:text-6xl font-archivo uppercase font-bold">
-          {{ t("system_logs") }}
+        <h2
+          class="text-4xl md:text-6xl font-display uppercase font-bold text-white"
+        >
+          {{ t('system_logs') }}
         </h2>
-        <span class="font-mono text-lg md:text-xl mb-1 md:mb-2 animate-pulse">
-          {{ t("read_only") }}
+        <span class="label text-text-secondary">
+          {{ t('read_only') }}
         </span>
       </div>
 
       <button
         type="button"
-        class="font-mono font-bold text-sm md:text-base underline decoration-2 underline-offset-4 hover:bg-black hover:text-electric hover:decoration-electric px-2 py-1 whitespace-nowrap cursor-pointer"
+        class="font-mono font-bold text-sm rounded-full border border-border-visible text-text-secondary hover:text-accent hover:border-accent px-4 py-2 whitespace-nowrap cursor-pointer transition-colors"
         @click="emit('openArchive')"
       >
-        [ {{ t("view_archive") }} ]
+        {{ t('view_archive') }}
       </button>
     </div>
 
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t-4 border-l-4 border-black"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-border"
     >
       <NuxtLink
         v-for="post in visiblePosts"
         :key="post.id"
         :to="getBlogUrl(post)"
-        class="cursor-pointer relative border-r-4 border-b-4 border-black p-6 md:p-8 flex flex-col justify-between group hover:bg-black hover:text-electric transition-all active:scale-[0.98] min-h-62.5 md:aspect-square"
+        class="cursor-pointer relative border-r border-b border-border p-6 md:p-8 flex flex-col justify-between group hover:bg-surface-raised transition-all active:scale-[0.98] min-h-62.5 md:aspect-square"
       >
-        <div class="flex justify-between font-mono text-xs opacity-60">
-          <span>// {{ post.category }}</span>
+        <div class="flex justify-between label text-text-secondary">
+          <span>{{ post.category }}</span>
           <span>{{ post.date }}</span>
         </div>
         <h3
-          class="text-3xl md:text-4xl font-archivo uppercase leading-none break-words mt-4 md:mt-0 font-bold"
+          class="text-3xl md:text-4xl font-sans uppercase leading-none wrap-break-word mt-4 md:mt-0 font-bold text-white group-hover:text-accent transition-colors"
         >
           {{ getLocalized(post.title) }}
         </h3>
-        <div class="w-full h-1 bg-black group-hover:bg-electric mt-4 md:mt-0" />
+        <div
+          class="w-full h-1 bg-border group-hover:bg-accent mt-4 md:mt-0 transition-colors"
+        />
       </NuxtLink>
     </div>
   </section>
