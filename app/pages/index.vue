@@ -1,39 +1,64 @@
 <script setup lang="ts">
-// Blog Archive modal state
-const showArchive = ref(false)
+const showArchive = ref(false);
 
-const { data: projects } = await useAsyncData(
-  'projects',
-  async () => {
-    const all = await queryCollection('projects').all()
-    return all.sort((a, b) => Number(a.displayId) - Number(b.displayId))
-  }
-)
+const { data: projects } = await useAsyncData('projects', async () => {
+  const all = await queryCollection('projects').all();
+  return all.sort((a, b) => Number(a.displayId) - Number(b.displayId));
+});
 
-const { data: blogPosts } = await useAsyncData(
-  'blog',
-  async () => {
-    return await queryCollection('blog').order('date', 'DESC').all()
-  }
-)
+const { data: blogPosts } = await useAsyncData('blog', async () => {
+  return await queryCollection('blog').order('date', 'DESC').all();
+});
 
 const openArchive = () => {
-  showArchive.value = true
-}
+  showArchive.value = true;
+};
 
 const closeArchive = () => {
-  showArchive.value = false
-}
+  showArchive.value = false;
+};
 </script>
 
 <template>
   <div>
-    <Hero />
-    <Marquee />
-    <ProjectShowcase :projects="projects || []" />
-    <BlogGrid :posts="blogPosts || []" @open-archive="openArchive" />
-    <ProjectEstimator />
-    <CVSection />
+    <SectionContainer width="normal">
+      <Hero />
+    </SectionContainer>
+
+    <SectionContainer
+      width="normal"
+      dot-grid
+    >
+      <Marquee />
+    </SectionContainer>
+
+    <SectionContainer
+      width="full"
+      :padding="false"
+    >
+      <ProjectShowcase :projects="projects || []" />
+    </SectionContainer>
+
+    <SectionContainer width="wide">
+      <BlogGrid
+        :posts="blogPosts || []"
+        @open-archive="openArchive"
+      />
+    </SectionContainer>
+
+    <SectionContainer
+      width="wide"
+      dot-grid
+    >
+      <ProjectEstimator />
+    </SectionContainer>
+
+    <SectionContainer
+      width="normal"
+      dot-grid
+    >
+      <CVSection />
+    </SectionContainer>
 
     <BlogArchive
       :posts="blogPosts || []"
