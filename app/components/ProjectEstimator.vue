@@ -301,6 +301,7 @@ const getImageUrl = (file: File) => URL.createObjectURL(file);
             >
               <textarea
                 v-model="description"
+                :aria-label="t('est_placeholder')"
                 class="w-full h-full bg-transparent p-2 font-sans text-base text-text-primary placeholder-text-disabled focus:outline-none resize-none min-h-62.5"
                 :placeholder="t('est_placeholder')"
               />

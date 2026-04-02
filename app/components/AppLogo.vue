@@ -1,3 +1,5 @@
 <template>
-  <NuxtImg class="h-32 w-32" src="/img/icon-only.svg" alt="pedropcruz Logo" />
+  <span class="text-white font-sans text-lg tracking-wider">
+    PEDRO CRUZ
+  </span>
 </template>

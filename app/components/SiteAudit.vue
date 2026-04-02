@@ -217,6 +217,7 @@ const reset = () => {
           v-model="url"
           type="text"
           :placeholder="t('audit_placeholder')"
+          :aria-label="t('audit_title')"
           size="xl"
           :ui="{
             base: 'w-full bg-surface border border-border rounded-lg font-mono text-sm text-text-primary focus:border-accent uppercase'
