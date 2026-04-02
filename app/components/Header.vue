@@ -15,26 +15,17 @@ const { open: openCommandPalette } = useCommandPalette();
     </template>
 
     <template #right>
-      <div class="flex items-center gap-2">
-        <!-- CommandPalette trigger: search icon on mobile, ⌘K badge on desktop -->
-        <UButton
-          color="neutral"
-          variant="ghost"
-          size="sm"
-          square
-          :ui="{
-            base: 'border border-border-visible hover:bg-surface-raised hover:text-accent rounded-lg'
-          }"
+      <div class="flex items-center gap-4">
+        <button
+          class="label text-text-secondary hover:text-accent transition-colors cursor-pointer"
           @click="openCommandPalette"
         >
-          <!-- Mobile: search icon -->
           <UIcon
             name="i-lucide-search"
             class="size-4 md:hidden"
           />
-          <!-- Desktop: ⌘K badge -->
-          <span class="hidden md:inline font-mono text-xs text-text-secondary">⌘K</span>
-        </UButton>
+          <span class="hidden md:inline">⌘K</span>
+        </button>
 
         <LanguageSwitch />
       </div>

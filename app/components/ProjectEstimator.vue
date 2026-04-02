@@ -143,15 +143,8 @@ const getImageUrl = (file: File) => URL.createObjectURL(file);
     <div
       class="w-full max-w-7xl mx-auto relative bg-surface border border-border-visible rounded-lg p-6 md:p-10"
     >
-      <!-- Top Label -->
-      <div
-        class="absolute top-0 left-4 -translate-y-1/2 label bg-surface-raised text-text-secondary border border-border px-3 py-1 rounded"
-      >
-        {{ t('est_config_unit') }}
-      </div>
-
       <h2
-        class="text-4xl md:text-7xl font-display mt-8 mb-16 text-white uppercase text-center leading-[0.9]"
+        class="text-4xl md:text-7xl font-display mt-4 mb-16 text-white uppercase text-center leading-[0.9]"
       >
         {{ t('est_title') }}
       </h2>

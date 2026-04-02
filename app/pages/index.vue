@@ -26,7 +26,7 @@ const closeArchive = () => {
     </SectionContainer>
 
     <SectionContainer
-      width="normal"
+      width="full"
       dot-grid
     >
       <Marquee />

@@ -50,7 +50,7 @@ const { t } = useI18n();
           {{ t('hero_desc') }}
         </div>
 
-        <div class="w-full lg:w-auto">
+        <div class="w-full lg:w-96 shrink-0">
           <SiteAudit />
         </div>
       </div>
