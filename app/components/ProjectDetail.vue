@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProjectsCollectionItem } from "@nuxt/content";
+import type { ProjectsCollectionItem } from '@nuxt/content';
 
 const props = defineProps<{
   project: ProjectsCollectionItem;
@@ -11,19 +11,17 @@ const { getLocalized } = useLocalizedValue();
 </script>
 
 <template>
-  <div class="min-h-screen bg-electric">
+  <div class="min-h-screen bg-black">
     <!-- Header -->
     <div
-      class="h-16 md:h-20 flex justify-between items-center px-4 md:px-12 border-b-4 border-black bg-electric sticky top-0 z-50"
+      class="h-16 md:h-20 flex justify-between items-center px-6 md:px-12 lg:px-16 border-b border-border bg-surface sticky top-0 z-50"
     >
       <div class="flex flex-col overflow-hidden mr-4">
-        <span
-          class="font-mono text-[10px] md:text-xs font-bold uppercase opacity-60 whitespace-nowrap"
-        >
-          CASE STUDY // 0{{ project.displayId }}
+        <span class="label text-text-secondary whitespace-nowrap">
+          CASE STUDY
         </span>
         <h2
-          class="text-xl md:text-4xl font-archivo uppercase leading-none truncate font-bold"
+          class="text-xl md:text-4xl font-sans uppercase leading-none truncate font-bold text-white"
         >
           {{ project.title }}
         </h2>
@@ -36,22 +34,24 @@ const { getLocalized } = useLocalizedValue();
         size="lg"
         square
         :ui="{
-          base: 'border-4 border-black hover:bg-black hover:text-electric rounded-none ',
+          base: 'border border-border-visible hover:bg-surface-raised hover:text-accent rounded-lg'
         }"
       />
     </div>
 
     <!-- Content -->
-    <div class="p-4 md:p-20 font-montserrat text-black bg-white/50">
-      <div class="max-w-5xl mx-auto flex flex-col gap-8 md:gap-16">
+    <div class="px-6 md:px-12 lg:px-16 py-24 md:py-32 font-sans text-text-primary bg-black">
+      <div class="max-w-6xl mx-auto flex flex-col gap-8 md:gap-16">
         <!-- Introduction -->
-        <div class="border-b-4 border-black pb-8">
+        <div class="border-b border-border pb-8">
           <h1
-            class="text-4xl md:text-7xl font-archivo uppercase mb-4 md:mb-6 leading-none warp-break-words font-bold"
+            class="text-4xl md:text-7xl font-display uppercase mb-4 md:mb-6 leading-none warp-break-words font-bold text-white"
           >
             {{ project.title }}
           </h1>
-          <p class="font-mono text-base md:text-xl uppercase max-w-2xl">
+          <p
+            class="font-sans text-base md:text-xl text-text-secondary max-w-2xl"
+          >
             {{ getLocalized(project.description) }}
           </p>
           <div class="flex flex-wrap gap-2 mt-6">
@@ -61,13 +61,13 @@ const { getLocalized } = useLocalizedValue();
               :label="tag"
               size="lg"
               :ui="{
-                base: 'rounded-none bg-black text-white font-bold uppercase',
+                base: 'rounded-full border border-border-visible text-text-secondary font-mono uppercase bg-transparent'
               }"
             />
           </div>
         </div>
 
-        <div class="w-full border-4 border-black shadow-hard overflow-hidden">
+        <div class="w-full border border-border rounded-lg overflow-hidden">
           <NuxtImg
             v-if="project.details?.images?.[0]"
             :src="project.details.images[0]"
@@ -81,9 +81,11 @@ const { getLocalized } = useLocalizedValue();
         </div>
 
         <!-- Tech Stack -->
-        <div class="bg-black p-6 md:p-8 text-electric shadow-hard">
+        <div
+          class="bg-surface-raised p-6 md:p-8 border border-border-visible rounded-lg"
+        >
           <h3
-            class="font-archivo text-2xl md:text-3xl uppercase mb-6 border-b-2 border-electric pb-2 inline-block"
+            class="font-sans font-bold text-2xl md:text-3xl uppercase mb-6 border-b border-border pb-2 inline-block text-white"
           >
             Tech Stack
           </h3>
@@ -94,11 +96,13 @@ const { getLocalized } = useLocalizedValue();
               class="group"
             >
               <h4
-                class="font-black font-mono text-lg md:text-xl mb-1 uppercase group-hover:text-white transition-colors"
+                class="font-bold font-mono text-lg md:text-xl mb-1 uppercase text-text-primary group-hover:text-accent transition-colors"
               >
                 {{ tech.name }}
               </h4>
-              <p class="text-sm opacity-70 group-hover:opacity-100">
+              <p
+                class="text-sm text-text-secondary group-hover:text-text-primary transition-colors"
+              >
                 {{ getLocalized(tech.reason) }}
               </p>
             </div>
@@ -106,16 +110,20 @@ const { getLocalized } = useLocalizedValue();
         </div>
 
         <!-- CTA Section -->
-        <div class="mt-8 md:mt-12 text-center pb-20">
-          <h3 class="font-archivo text-2xl md:text-4xl mb-6 uppercase">
-            {{ t("need_technologist") }}
+        <div
+          class="mt-8 md:mt-12 text-center pb-20 bg-surface-raised border border-border-visible rounded-lg p-6 md:p-12"
+        >
+          <h3
+            class="font-sans font-bold text-2xl md:text-4xl mb-6 uppercase text-white"
+          >
+            {{ t('need_technologist') }}
           </h3>
           <UButton
             to="mailto:me@pedropcruz.pt"
             :label="t('initiate_contact')"
             size="xl"
             :ui="{
-              base: 'rounded-none bg-black text-electric font-archivo hover:bg-electric hover:text-black border-4 border-transparent hover:border-black uppercase text-lg md:text-2xl shadow-hard px-8 py-6',
+              base: 'rounded-full bg-accent text-black font-sans font-bold hover:bg-accent/90 uppercase text-lg md:text-2xl px-8 py-6'
             }"
           />
         </div>
