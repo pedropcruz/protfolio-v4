@@ -121,7 +121,7 @@ const reset = () => {
     <div
       class="bg-surface-raised w-full h-6 mb-1 rounded-t-md flex items-center justify-between px-2"
     >
-      <span class="label text-text-secondary">SITE_AUDIT_V1</span>
+      <span class="label text-text-secondary">ROAST MY SITE</span>
       <div class="flex gap-1">
         <div class="w-2 h-2 bg-accent rounded-full" />
         <div class="w-2 h-2 bg-text-disabled rounded-full" />
