@@ -2,8 +2,7 @@
 import { gsap } from 'gsap';
 
 const { t } = useI18n();
-const isOpen = ref(false);
-provide('commandPaletteOpen', isOpen);
+const { isOpen } = useCommandPalette();
 const query = ref('');
 const selectedIndex = ref(0);
 

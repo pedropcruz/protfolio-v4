@@ -1,11 +1,5 @@
 <script setup lang="ts">
-const commandPaletteOpen = inject<Ref<boolean>>('commandPaletteOpen');
-
-const openCommandPalette = () => {
-  if (commandPaletteOpen) {
-    commandPaletteOpen.value = true;
-  }
-};
+const { open: openCommandPalette } = useCommandPalette();
 </script>
 
 <template>
