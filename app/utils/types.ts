@@ -57,13 +57,43 @@ export interface ContentBlogPost {
   [key: string]: unknown;
 }
 
+export interface EstimateRequest {
+  name: string;
+  email: string;
+  projectType: 'fixed' | 'retainer';
+  velocity: 'standard' | 'express';
+  services: string[];
+  problem: string;
+  currentSolution?: string;
+  expectedOutcome: string;
+  budgetRange?: string;
+  monthlyHours?: string;
+  locale: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  consentGiven: boolean;
+}
+
+export interface EstimateBreakdownItem {
+  item: string;
+  hoursMin: number;
+  hoursMax: number;
+  costMin: number;
+  costMax: number;
+}
+
 export interface EstimateResponse {
-  type: 'ESTIMATE' | 'REFUSAL';
-  invoiceId?: string;
-  date?: string;
-  totalCost?: number;
-  totalHours?: number;
-  feasibility?: string;
-  breakdown?: Array<{ item: string; hours: number; cost: number }>;
+  invoiceId: string;
+  date: string;
+  totalCostMin: number;
+  totalCostMax: number;
+  totalHoursMin: number;
+  totalHoursMax: number;
+  hourlyRateMin?: number;
+  hourlyRateMax?: number;
+  feasibility: string;
+  breakdown: EstimateBreakdownItem[];
+  expressSurcharge: boolean;
   message: string;
 }
