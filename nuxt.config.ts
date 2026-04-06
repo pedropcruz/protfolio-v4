@@ -6,13 +6,42 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/image',
     '@nuxt/hints',
+    '@nuxt/fonts',
     '@nuxtjs/i18n',
+    '@nuxtjs/seo',
     'v-gsap-nuxt',
     'nuxt-studio'
   ],
 
   devtools: {
     enabled: true
+  },
+
+  site: {
+    url: 'https://pedropcruz.pt',
+    name: 'Pedro Cruz',
+    description: 'I find small problems worth solving and ship the product, brand, and code myself. Design, engineering, and product — solo.',
+    defaultLocale: 'en'
+  },
+
+  ogImage: {
+    zeroRuntime: process.env.NODE_ENV === 'production'
+  },
+
+  sitemap: {
+    xslColumns: [
+      { label: 'URL', width: '65%' },
+      { label: 'Last Modified', select: 'sitemap:lastmod', width: '25%' }
+    ]
+  },
+
+  robots: {
+    groups: [
+      {
+        userAgent: '*',
+        allow: '/'
+      }
+    ]
   },
 
   app: {
@@ -40,6 +69,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     posthogApiKey: '',
     posthogProjectId: '',
+    databaseUrl: '',
+    resendApiKey: '',
+    discordWebhookUrl: '',
     public: {
       posthogPublicKey: '',
       posthogHost: 'https://eu.i.posthog.com'
@@ -76,6 +108,13 @@ export default defineNuxtConfig({
     langDir: 'locales',
     defaultLocale: 'en',
     strategy: 'prefix'
+  },
+
+  fonts: {
+    families: [
+      { name: 'Doto', weights: [400, 700, 900], global: true },
+      { name: 'Space Mono', weights: [400, 700], global: true }
+    ]
   },
 
   studio: {

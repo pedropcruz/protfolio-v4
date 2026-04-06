@@ -55,12 +55,40 @@ const title = computed(() => {
 const category = computed(() => post.value?.category);
 const date = computed(() => post.value?.date);
 
+const seoDescription = computed(() => {
+  const seo = (post.value as any)?.seo?.description;
+  if (seo && typeof seo === 'object' && seo[locale.value]) return seo[locale.value];
+  if (seo && typeof seo === 'string' && seo) return seo;
+  return `${title.value} — ${category.value} article by Pedro Cruz`;
+});
+
 useSeoMeta({
   title: `${title.value} - Pedro Cruz`,
-  description: `${category.value} - ${date.value}`,
+  description: seoDescription.value,
   ogTitle: `${title.value} - Pedro Cruz`,
-  ogDescription: `${category.value} - ${date.value}`
+  ogDescription: seoDescription.value,
+  ogType: 'article',
+  articleSection: category.value,
+  articlePublishedTime: date.value
 });
+
+defineOgImage('Template', {
+  title: title.value,
+  description: seoDescription.value,
+  category: category.value
+});
+
+useSchemaOrg([
+  defineArticle({
+    headline: title.value || '',
+    datePublished: date.value || '',
+    author: {
+      name: 'Pedro Cruz',
+      url: 'https://pedropcruz.pt'
+    },
+    articleSection: category.value ? [category.value] : undefined
+  })
+]);
 
 const { data: stats, status } = await useFetch('/api/blog-stats', {
   query: { slug },

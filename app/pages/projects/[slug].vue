@@ -41,8 +41,22 @@ useSeoMeta({
   title: `${project.value.title} - Pedro Cruz`,
   description: description.value,
   ogTitle: `${project.value.title} - Pedro Cruz`,
-  ogDescription: description.value
+  ogDescription: description.value,
+  ogType: 'article'
 });
+
+defineOgImage('Template', {
+  title: project.value.title,
+  description: description.value,
+  tags: project.value.tags
+});
+
+useSchemaOrg([
+  defineWebPage({
+    name: `${project.value.title} - Pedro Cruz`,
+    description: description.value || ''
+  })
+]);
 
 onMounted(() => {
   const { $posthog } = useNuxtApp();
