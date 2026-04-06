@@ -46,7 +46,7 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 text-sm md:text-base tracking-wide mb-8 pb-4 border-b border-border w-full max-w-2xl"
+    class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 text-sm md:text-base tracking-wide mb-8 pb-4 w-full max-w-2xl"
   >
     <div class="flex items-center gap-2">
       <span class="w-2 h-2 bg-accent rounded-full" />

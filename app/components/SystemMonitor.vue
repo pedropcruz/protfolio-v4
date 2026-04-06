@@ -160,7 +160,10 @@ onUnmounted(() => {
         </svg>
       </div>
 
-      <div v-show="isExpanded" class="p-4 space-y-3">
+      <div
+        v-show="isExpanded"
+        class="p-4 space-y-3"
+      >
         <!-- TABS -->
         <div class="flex gap-2 mb-3">
           <button
@@ -188,30 +191,34 @@ onUnmounted(() => {
         </div>
 
         <!-- LOCAL CONTENT -->
-        <div v-show="activeTab === 'LOCAL'" class="space-y-3">
+        <div
+          v-show="activeTab === 'LOCAL'"
+          class="space-y-3"
+        >
           <div class="flex justify-between border-b border-border pb-2">
             <div class="flex flex-col">
               <span
                 class="font-mono uppercase tracking-wider text-xs text-text-secondary"
-                >FPS</span
-              >
-              <span ref="fpsRef" class="text-xl text-white font-sans">60</span>
+              >FPS</span>
+              <span
+                ref="fpsRef"
+                class="text-xl text-white font-sans"
+              >60</span>
             </div>
             <div class="flex flex-col text-right">
               <span
                 class="font-mono uppercase tracking-wider text-xs text-text-secondary"
-                >LATENCY</span
-              >
-              <span class="text-white font-sans"
-                ><span ref="msRef">16.7</span>ms</span
-              >
+              >LATENCY</span>
+              <span class="text-white font-sans"><span ref="msRef">16.7</span>ms</span>
             </div>
             <div class="flex flex-col text-right">
               <span
                 class="font-mono uppercase tracking-wider text-xs text-text-secondary"
-                >LOCAL_TIME</span
-              >
-              <span ref="timeRef" class="text-white font-sans">00:00:00</span>
+              >LOCAL_TIME</span>
+              <span
+                ref="timeRef"
+                class="text-white font-sans"
+              >00:00:00</span>
             </div>
           </div>
 
@@ -219,16 +226,20 @@ onUnmounted(() => {
             <div>
               <span
                 class="font-mono uppercase tracking-wider text-xs text-text-secondary block"
-                >MEMORY_HEAP</span
-              >
-              <span ref="memRef" class="text-white font-sans">---MB</span>
+              >MEMORY_HEAP</span>
+              <span
+                ref="memRef"
+                class="text-white font-sans"
+              >---MB</span>
             </div>
             <div class="text-right">
               <span
                 class="font-mono uppercase tracking-wider text-xs text-text-secondary block"
-                >DOM_NODES</span
-              >
-              <span ref="nodesRef" class="text-white font-sans">---</span>
+              >DOM_NODES</span>
+              <span
+                ref="nodesRef"
+                class="text-white font-sans"
+              >---</span>
             </div>
           </div>
 
@@ -236,26 +247,26 @@ onUnmounted(() => {
             <div class="flex justify-between">
               <span
                 class="font-mono uppercase tracking-wider text-xs text-text-secondary"
-                >CURSOR_POS</span
-              >
-              <span ref="coordsRef" class="text-white font-sans"
-                >WAITING_INPUT</span
-              >
+              >CURSOR_POS</span>
+              <span
+                ref="coordsRef"
+                class="text-white font-sans"
+              >WAITING_INPUT</span>
             </div>
             <div class="flex justify-between">
               <span
                 class="font-mono uppercase tracking-wider text-xs text-text-secondary"
-                >SCROLL_VEL</span
-              >
-              <span class="text-white font-sans"
-                ><span ref="velocityRef">000</span> px/f</span
-              >
+              >SCROLL_VEL</span>
+              <span class="text-white font-sans"><span ref="velocityRef">000</span> px/f</span>
             </div>
           </div>
         </div>
 
         <!-- GLOBAL CONTENT -->
-        <div v-if="activeTab === 'GLOBAL'" class="space-y-3 min-h-[140px]">
+        <div
+          v-if="activeTab === 'GLOBAL'"
+          class="space-y-3 min-h-[140px]"
+        >
           <div
             v-if="!globalStats"
             class="flex items-center justify-center h-full py-8 text-text-disabled"
@@ -264,8 +275,8 @@ onUnmounted(() => {
           </div>
           <div
             v-else-if="
-              globalStats.status &&
-              globalStats.status.startsWith('misconfigured')
+              globalStats.status
+                && globalStats.status.startsWith('misconfigured')
             "
             class="text-center py-4 text-orange-500 text-[10px] break-all p-2"
           >
@@ -277,13 +288,15 @@ onUnmounted(() => {
           >
             SERVER_ERROR (Check Logs)
           </div>
-          <div v-else class="space-y-3">
+          <div
+            v-else
+            class="space-y-3"
+          >
             <div class="flex justify-between border-b border-border pb-2">
               <div class="flex flex-col">
                 <span
                   class="font-mono uppercase tracking-wider text-xs text-text-secondary"
-                  >VISITORS</span
-                >
+                >VISITORS</span>
                 <span class="text-xl text-white font-sans">{{
                   globalStats.visitors
                 }}</span>
@@ -291,8 +304,7 @@ onUnmounted(() => {
               <div class="flex flex-col text-right">
                 <span
                   class="font-mono uppercase tracking-wider text-xs text-text-secondary"
-                  >PAGE_VIEWS</span
-                >
+                >PAGE_VIEWS</span>
                 <span class="text-xl text-white font-sans">{{
                   globalStats.pageViews
                 }}</span>
@@ -302,17 +314,15 @@ onUnmounted(() => {
             <div class="space-y-1">
               <span
                 class="font-mono uppercase tracking-wider text-[10px] text-text-secondary block mb-1"
-                >TOP_PROJECTS</span
-              >
+              >TOP_PROJECTS</span>
               <div
                 v-for="(p, i) in globalStats.topProjects"
                 :key="i"
                 class="flex justify-between text-[10px]"
               >
                 <span
-                  class="uppercase truncate max-w-[120px] text-text-primary"
-                  >{{ p.name }}</span
-                >
+                  class="uppercase truncate max-w-30 text-text-primary"
+                >{{ p.name }}</span>
                 <span class="text-white font-sans">{{ p.views }}</span>
               </div>
               <div
@@ -336,7 +346,7 @@ onUnmounted(() => {
         <div class="pt-2 border-t border-border flex gap-2">
           <button
             class="flex-1 py-1 border border-border-visible text-center text-text-secondary rounded transition-colors duration-200 hover:bg-surface-raised hover:text-text-primary"
-            :class="{ 'bg-accent !text-black !border-accent': showGrid }"
+            :class="{ 'bg-accent text-black! border-accent!': showGrid }"
             @click="toggleGrid"
           >
             {{ showGrid ? 'HIDE_GRID' : 'SHOW_GRID' }}

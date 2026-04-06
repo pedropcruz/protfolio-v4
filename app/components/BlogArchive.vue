@@ -37,7 +37,7 @@ const { getLocalized } = useLocalizedValue();
           >
             {{ t('archive_title') }}
           </h2>
-          <UButton
+          <LazyUButton
             icon="i-lucide-x"
             color="neutral"
             variant="ghost"
